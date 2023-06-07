@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+{% block title %}Product-Management | ATN{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/product_insert.css') }}" />
+{% endblock %}
+{% block body %}
+{% include 'header.html.twig' %}
+<section>
+<style>
+    footer {
+        margin-top: 206px;
+    }
+</style>
+    <div class="container">
+        {# <form action="" class="insert-product-form"> #}
+        {{ form_start(productForm, {'attr':{'class':'insert-product-form'}}) }}
+            <label for="name">Product name:</label>
+            {# <input type="text" id="name" name="name" required> #}
+            {{ form_widget(productForm.name, {'attr':{'id':'name'}}) }}
+
+            <label for="price">Price:</label>
+            {# <input type="text" id="price" name="price" required> #}
+            {{ form_widget(productForm.price, {'attr':{'id':'price'}}) }}
+
+            <label for="category">Category:</label>
+            {# <input type="text" id="category" name="category" required> #}
+            {{ form_widget(productForm.cat, {'attr':{'id':'category'}}) }}
+
+            <label for="file">Product image:</label>
+            {# <input type="file" id="file" name="file" required> #}
+            {{ form_widget(productForm.file, {'attr':{'id':'file'}}) }}
+            {% set img = productForm.image.vars.value %}
+            {% if img %}
+            <img src="{{asset('uploads/'~img)}}" class="w-25 shadow p-3 mb-5 bg-body rounded" />
+            {% else %}
+            <img src="https://cdn2.iconfinder.com/data/icons/symbol-blue-set-3/100/Untitled-1-94-512.png" class="w-25 shadow p-3 mb-5 bg-body rounded" />
+            {% endif %}
+            {# <button type="submit" class="insert-btn">Insert</button> #}
+            {{ form_widget(productForm.save, {'attr':{'class':'insert-btn'}}) }}
+        {# </form> #}
+        {{ form_end(productForm) }}
+    </div>
+</section>
+{% include 'footer.html.twig' %}
+{% endblock %}

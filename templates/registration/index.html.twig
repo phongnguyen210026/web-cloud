@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Create account | ATN{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/register.css') }}" />
+{% endblock %}
+{% block body %}
+    <section>
+            {# <form action="" class="register-form"> #}
+                {{ form_start(registrationForm, {'attr':{'class':'register-form'}}) }}
+                <h2>Sign Up</h2>
+
+                <label for="first-name">First name:</label>
+                {# <input type="text" id="name" name="name" required> #}
+                {{ form_widget(registrationForm.firstName, {'attr':{'id':'first-name'}}) }}
+                
+                <label for="last-name">Last name:</label>
+                {# <input type="text" id="name" name="name" required> #}
+                {{ form_widget(registrationForm.lastName, {'attr':{'id':'last-name'}}) }}
+
+                <label for="email">Email:</label>
+                {# <input type="email" id="email" name="email" required> #}
+                {{ form_widget(registrationForm.email, {'attr':{'id':'email'}}) }}
+                
+                <label for="password">Password:</label>
+                {# <input type="password" id="password" name="password" required> #}
+                {{ form_widget(registrationForm.password.first, {'attr':{'id':'password'}}) }}
+                
+                <label for="password-confirm">Confirm password:</label>
+                {# <input type="password" id="password" name="password" required> #}
+                {{ form_widget(registrationForm.password.second, {'attr':{'id':'password-confirm'}}) }}
+
+                {# <button type="submit">Sign Up</button> #}
+                {{ form_widget(registrationForm.save) }}
+              {# </form>               #}
+              {{ form_end(registrationForm) }}
+        </section>
+{% endblock %}

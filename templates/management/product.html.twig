@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+{% block title %}Product-Management | ATN{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/product_management.css') }}" />
+{% endblock %}
+{% block body %}
+{% include 'header.html.twig' %}
+<section>
+<style>
+  footer {
+    margin-top: 48%;
+  }
+</style>
+            <div class="container-fluid">
+                <a href="{{path('product_insert')}}" class="insert-btn">Insert</a>
+                <form action="{{path('product_search')}}" class="search-form" method="post">
+                    <input type="search" name="content" class="input-search form-control" placeholder="Type to Search...">
+                    <button type="submit" class="btn btn-search"><i class="fas fa-search"></i></button>
+                </form>
+                <div class="container-link">
+                    <span><a href="{{path('show_cat_manage')}}">Category</a></span>
+                    <span><a href="{{path('show_product_manage')}}">Product</a></span>
+                </div>
+                <table>
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Image</th>
+                        <th>Type</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {% for p in product %}
+                    <tr>
+                        <td>{{ p.id }}</td>
+                        <td>{{ p.name }}</td>
+                        <td>{{ p.price }}</td>
+                        <td><img src="{{asset('uploads/'~ p.image)}}" alt="Product"></td>
+                        <td>{{ p.cat }}</td>
+                        {# {% for c in cat %}
+                            {% if c sameas p.cat %}
+                                <td>{{ c.name }}</td>
+                            {% endif %}
+                        {% endfor %} #}
+                        <td>
+                            <a href="{{path('product_update', {'id':p.id})}}">Edit</a>
+                            <a href="{{path('product_delete', {'id':p.id})}}">Delete</a>
+                        </td>
+                    </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+{% include 'footer.html.twig' %}
+{% endblock %}

@@ -1,0 +1,119 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home | ATN{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
+{% endblock %}
+
+{% block body %}
+{% include 'header.html.twig' %}
+    <section class="m-3">
+    <style>
+      footer {
+        margin-top: 20px;
+      }
+    </style>
+            <div class="img-container">
+                <img src="{{asset('image/nendoroid_nintama_rantaro_hansuke_doi__2__23b9563448e34aa8bc51d3380cf4ac7d_master.webp')}}" alt="banner">
+                <div class="line"></div>
+                <img src="{{asset('image/nendoroid_nintama_rantaro_hansuke_doi__1__128e4de374d34f6ea3d80202967233a5_master.webp')}}" alt="banner">
+                <div class="content">
+                    <h2>Shop now</h2>
+                    <p>Bring Your Favorite Characters to Your Shelf.</p>
+                </div>
+            </div>
+        </section>
+        <section class="m-5">
+            <div class="line-container">
+                <hr class="line-type">
+                <div class="sentence">Choose your own</div>
+            </div>
+            <div class="type-container m-5">
+                <div class="rectangle first-rectangle">
+                    <div class="content-rec first-content-rec">Figure</div>
+                </div>
+                <div class="rectangle second-rectangle">
+                    <div class="content-rec second-content-rec">Lego</div>
+                </div>
+                <div class="rectangle third-rectangle">
+                    <div class="content-rec third-content-rec">Smart</div>
+                </div>  
+            </div>
+        </section>
+        <section>
+            <div class="article">
+                <div class="text-article">
+                  <h2>Unlock Your Creativity with LEGO Toys</h2>
+                  <p>Unleash your imagination with LEGO toys. These iconic building blocks offer endless fun and 
+                    exploration for all ages. With LEGO, you can build skyscrapers, spacecraft, and more. They 
+                    foster creativity, enhance problem-solving skills, and promote critical thinking. LEGO sets 
+                    come in various themes, from superheroes to cityscapes. Connect with others in the LEGO 
+                    community and share your creations. From classic sets to advanced Technic models, there's a 
+                    LEGO toy for everyone. Dive into a world of endless possibilities, where you can construct, 
+                    deconstruct, and rebuild to your heart's content. Let your creativity soar with LEGO toys!</p>
+                </div>
+                <div class="image-article">
+                  <img src="../Image/40553.webp" alt="Article Image">
+                </div>
+            </div>
+            <div class="article">
+                <div class="image-article">
+                    <img src="../Image/mono19757834-180530-02-transformed.png" alt="Image">
+                </div>
+                <div class="text-article">
+                    <h2>Unleash Your Imagination with Figure Toys</h2>
+                    <p>Step into a world of imagination with figure toys. These collectibles bring beloved characters to life 
+                        from movies, TV shows, and more. Recreate iconic scenes or invent new adventures with meticulously 
+                        detailed figures. Figure toys evoke emotional connections and hold nostalgic value. Pose and arrange 
+                        them to create dynamic displays and express your unique interests. They become cherished possessions 
+                        that bring joy and fond memories. Whether you're a collector or seeking to add a touch of magic to your 
+                        space, figure toys inspire endless storytelling and personal expression. Experience the wonder of figure 
+                        toys and let your imagination run wild.</p>
+                </div>
+            </div>
+            <div class="article">
+                <div class="text-article">
+                    <h2>Experience the Future of Play with Smart Toys</h2>
+                  <p>Discover the future of play with smart toys. These innovative gadgets combine technology and 
+                    imagination for a captivating experience. Smart toys offer interactive features, educational 
+                    content, and connectivity to enhance playtime. From robotic companions to augmented reality 
+                    games, they engage and entertain. These toys promote critical thinking, problem-solving, and 
+                    STEM skills. With smart toys, children can learn while having fun. They open up a world of 
+                    immersive play, where virtual and physical realms merge. Experience the excitement of smart 
+                    toys and embrace a new era of interactive and educational entertainment.
+                  </p>
+                </div>
+                <div class="image-article">
+                  <img src="../Image/venom-symbiote-wolverine_marvel_silo_sm.png" alt="Image">
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="product-container">
+                <div class="highlight-product">
+                    <span class="title-product">TOP PRODUCT</span>
+                </div>  
+                <div class="row">
+                    {% for p in product %}
+                      <div class="product-card col-3">
+                        <div class="product-image">
+                          <img src="{{ asset('uploads/' ~ p.image) }}" alt="Product Image">
+                        </div>
+                        <div class="product-details">
+                          <h3 class="product-name">{{ p.name }}</h3>
+                          <p class="product-price">${{ p.price }}</p>
+                          <a href="#" class="add-to-cart-btn">Add to Cart</a>
+                          <div class="overlay">
+                            <a href="#" class="view-details-btn">View Details</a>
+                          </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <div class="see-product-btn">
+                        <a href="#">Shop now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+{% include 'footer.html.twig' %}
+{% endblock %}

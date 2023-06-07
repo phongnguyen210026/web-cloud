@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Login | ATN{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}" />
+{% endblock %}
+{% block body %}
+<section>
+    <form action="" method="post" class="login-form">
+        <h2>Log in</h2>
+        {% if error %}
+                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+                
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <input type="hidden" name="_csrf_token"
+                value="{{ csrf_token('authenticate') }}"
+                > 
+        <button type="submit">Login</button>
+
+        <a class="register-link" href=""><span>Register now!</span></a>
+    </form>              
+</section>
+{% endblock %}

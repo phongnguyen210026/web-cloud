@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+{% block title %}Category - Insert | ATN{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/product_insert.css') }}" />
+{% endblock %}
+{% block body %}
+{% include 'header.html.twig' %}
+<section>
+<style>
+    footer {
+        margin-top: 48%;
+    }
+</style>
+            <div class="container">
+                {# <form action="" class="insert-product-form"> #}
+                {{ form_start(catForm, {'attr': {'class':'insert-product-form'}}) }}
+                    <label for="name">Category name:</label>
+                    {# <input type="text" id="name" name="name" required> #}
+                    {{ form_widget(catForm.name, {'attr':{'id':'name'}}) }}
+
+                    {# <button type="submit" class="insert-btn">Insert</button> #}
+                    {{ form_widget(catForm.save, {'attr':{'class':'insert-btn'}}) }}
+                {# </form> #}
+                {{ form_end(catForm) }}
+            </div>
+        </section>
+{% include 'footer.html.twig' %}
+{% endblock %}

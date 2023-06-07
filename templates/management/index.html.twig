@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+{% block title %}Category-Management | ATN{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/product_management.css') }}" />
+{% endblock %}
+{% block body %}
+{% include 'header.html.twig' %}
+<section>
+<style>
+  footer {
+    margin-top: 307px;
+  }
+</style>
+            <div class="container-fluid">
+                <a href="{{path('cat_insert')}}" class="insert-btn">Insert</a>
+                <form action="{{path('cat_search')}}" class="search-form" method="post">
+                    <input type="search" name="content" class="input-search form-control" placeholder="Type to Search...">
+                    <button type="submit" class="btn btn-search"><i class="fas fa-search"></i></button>
+                </form>
+                <div class="container-link">
+                    <span><a href="{{path('show_cat_manage')}}">Category</a></span>
+                    <span><a href="{{path('show_product_manage')}}">Product</a></span>
+                </div>
+                <table>
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for c in category %}
+                        <tr>
+                        <td>{{ c.id }}</td>
+                        <td>{{ c.name }}</td>
+                        <td>
+                            <a href="{{path('cat_update', {'id':c.id})}}">Edit</a>
+                            <a href="{{path('cat_delete', {'id':c.id})}}">Delete</a>
+                        </td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+{% include 'footer.html.twig' %}
+{% endblock %}

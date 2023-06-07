@@ -1,0 +1,56 @@
+{% block body %}
+    <header>
+            <section>
+                <div class="head-top-title">
+                    <span>Free shipping for orders over 1 million.</span>
+                </div>
+            </section>
+            <section>
+            {% if app.user != null %}
+                <style>
+                    .display-user {
+                        display:block;
+                    }
+                    .user {
+                        display:none;
+                    }
+                    .head-logo .whistlist {
+                        margin-left: 230px;
+                    }
+                </style>
+            {% endif %}
+                <div class="head-logo">
+                    <img class="main-logo" src="{{ asset('image/d9gq_oo09_151115.jpg') }}" alt="Logo">
+                    <form action="{{path('app_search')}}" method="post">
+                        <input type="search" name="content" class="input-search form-control" placeholder="Type to Search...">
+                        <button type="submit" class="btn btn-search"><i class="fas fa-search"></i></button>
+                    </form>
+                    <a href=""><span class="display-user">Welcome, <em>{{ firstName }}</em></span></a>
+                    <a class="user" href=""><span><i class="fa-regular fa-user"></i></span></a>
+                    <div class="div-icon"></div>
+                    <a class="whistlist" href=""><span ><i class="fa-regular fa-heart"></i></span></a>
+                    <a class="cart" href=""><span ><i class="fa-solid fa-cart-shopping"></i></span></a>
+                </div>
+            </section>
+            <section>
+                <nav>
+                    <ul>
+                        <li><a href="{{path('app_home')}}">Home</a></li>
+                        <li><a href="#">Shop</a>
+                            <ul class="dropdown-menu">
+                                {% for c in cat %}
+                                    <li><a href="">{{ c.name }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                        <li><a href="#">Promotion</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Blog</a></li>
+                        {% if is_granted("ROLE_ADMIN") %}
+                        <li><a href="{{path('show_cat_manage')}}">Management</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </section>
+        </header>
+{% endblock %}
