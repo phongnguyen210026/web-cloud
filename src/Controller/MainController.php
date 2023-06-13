@@ -36,7 +36,9 @@ class MainController extends AbstractController
         $param = $req->request->get('content');
         $result = $repo->searchProduct($param);
         $user = $this->getUser();
-        $firstName = $user->getFirstName();
+        if($user != null){
+            $firstName = $user->getFirstName();
+        }
         $cat = $cat_repo->findAll();
         return $this->render('main/search.html.twig', ['search_content'=>$param, 'result'=>$result,
         'firstName'=>$firstName, 'cat'=>$cat]);
