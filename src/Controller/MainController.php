@@ -41,4 +41,15 @@ class MainController extends AbstractController
         return $this->render('main/search.html.twig', ['search_content'=>$param, 'result'=>$result,
         'firstName'=>$firstName, 'cat'=>$cat]);
     }
+
+    /**
+     * @Route("/profile", name="app_profile")
+     */
+    public function profile(CategoryRepository $cat_repo): Response
+    {
+        $user = $this->getUser();
+        $firstName = $user->getFirstName();
+        $cat = $cat_repo->findAll();
+        return $this->render('main/profile.html.twig', ['firstName'=>$firstName, 'cat'=>$cat]);
+    }
 }

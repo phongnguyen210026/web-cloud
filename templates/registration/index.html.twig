@@ -5,6 +5,14 @@
     <link rel="stylesheet" href="{{ asset('css/register.css') }}" />
 {% endblock %}
 {% block body %}
+<style>
+.login-link{
+    color: #000000;
+}
+.login-link:hover{
+    color: #000000;
+}
+</style>
     <section>
             {# <form action="" class="register-form"> #}
                 {{ form_start(registrationForm, {'attr':{'class':'register-form'}}) }}
@@ -33,6 +41,7 @@
                 {# <button type="submit">Sign Up</button> #}
                 {{ form_widget(registrationForm.save) }}
               {# </form>               #}
+              <a class="login-link" href="{{path('app_login')}}"><span>Login now!</span></a>
               {{ form_end(registrationForm) }}
         </section>
 {% endblock %}

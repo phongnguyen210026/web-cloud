@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profile | ATN{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/profile.css') }}" />
+{% endblock %}
+
+{% block body %}
+{% include 'header.html.twig' %}
+<section>
+            <div class="container-profile">
+                <a href="{{path('app_logout')}}" class="logout-btn">Logout</a>
+            </div>
+        </section>
+{% include 'footer.html.twig' %}
+{% endblock %}
