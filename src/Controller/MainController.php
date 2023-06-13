@@ -14,12 +14,15 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class MainController extends AbstractController
 {
     /**
-     * @Route("/home", name="app_home")
+     * @Route("/", name="app_home")
      */
     public function home(UserRepository $repo, CategoryRepository $cat_repo, ProductRepository $pro_repo): Response
     {
+        $firstName = null;
         $user = $this->getUser();
-        $firstName = $user->getFirstName();
+        if($user != null){
+            $firstName = $user->getFirstName();
+        }
         $cat = $cat_repo->findAll();
         $product = $pro_repo->findBy([], null, 8);
         return $this->render('main/home.html.twig', ['firstName'=>$firstName, 'cat'=>$cat, 'product'=>$product]);
